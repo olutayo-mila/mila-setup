@@ -1,0 +1,11 @@
+defaults:
+  - _self_
+  - infrastructure: local # Default to safety (Laptop)
+  - model: resnet       # You can create conf/model/resnet.yaml later
+  - dataset: cifar      # You can create conf/dataset/cifar.yaml later
+
+# Common Hyperparameters
+batch_size: 32
+lr: 1e-3
+epochs: 10
+seed: 42

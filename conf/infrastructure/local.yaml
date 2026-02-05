@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - override /hydra/launcher: submitit_local
+
+infrastructure:
+  name: "local_debug"
+  nodes: 1
+  gpus: 0
+  cpus: 1
+  time: 10  # minutes
+  partition: "debug"
+  
+# Variables for your python code
+device: "cpu"
+paths:
+  data: "./data"  # Relative path on laptop
+log_wandb: False

@@ -1,0 +1,7 @@
+# conf/dataset/cifar.yaml
+name: "cifar10"
+# Notice how we use interpolation to grab the path from infrastructure!
+root: "${paths.data}/cifar10" 
+num_workers: 2
+pin_memory: True
+input_size: [3, 32, 32]

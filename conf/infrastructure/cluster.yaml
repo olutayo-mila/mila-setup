@@ -1,0 +1,14 @@
+# @package _global_
+infrastructure:
+  name: "cluster_run"
+  nodes: 1
+  gpus: 1
+  cpus: 8
+  time: 1440 # 24 hours
+  partition: "main"
+
+# Variables for your python code
+device: "cuda"
+paths:
+  data: "$SLURM_TMPDIR" # Fast SSD
+log_wandb: True
