@@ -2,6 +2,7 @@ import hydra
 from omegaconf import DictConfig
 import torch
 import os
+import wandb
 
 # Import our new data module
 from src.data import get_dataloaders
@@ -21,7 +22,7 @@ def main(cfg: DictConfig):
     else:
         # User forced a specific device (e.g., "cuda:0")
         device = torch.device(cfg.device)
-        
+
     # 2. Data Setup
     print("⬇️  Initializing Data...")
     train_loader, val_loader = get_dataloaders(cfg)
@@ -30,7 +31,14 @@ def main(cfg: DictConfig):
     # 3. Model Setup (Placeholder for now)
     # model = instantiate(cfg.model).to(device)
     
-    # 4. Dummy Training Loop
+    # 4. Init WandB
+    if cfg.log_wandb:
+        wandb.init(
+            project="mila-experiment-1",
+            config=OmegaConf.to_container(cfg, resolve=True),
+            name=cfg.infrastructure.name
+        )
+    # 5. Dummy Training Loop
     print("🔄 Starting Dummy Training Loop...")
     for i, (images, labels) in enumerate(train_loader):
         images, labels = images.to(device), labels.to(device)
@@ -39,7 +47,13 @@ def main(cfg: DictConfig):
         if i == 0:
             print(f"   Batch Shape: {images.shape}")
             print(f"   Label Shape: {labels.shape}")
+            
+        # Fake a loss for testing
+        fake_loss = 1.0 / (i + 1)
         
+        if cfg.log_wandb:
+            wandb.log({"train_loss": fake_loss, "batch": i})
+
         # Break early since this is just a test
         if i >= 5:
             break
