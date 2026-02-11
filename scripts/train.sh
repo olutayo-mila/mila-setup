@@ -24,4 +24,4 @@ cp $SOURCE_DATA $DEST_DIR/
 # Note: torchvision will see the .tar.gz file and automatically extract it
 # strictly BECAUSE we set download=True (or allow it to verify).
 echo "Step 3: Launching Training..."
-uv run python src/train.py infrastructure=cluster
+uv run python -m src.train infrastructure=cluster
