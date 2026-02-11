@@ -1,14 +1,15 @@
+# conf/infrastructure/cluster.yaml
 # @package _global_
 infrastructure:
   name: "cluster_run"
   nodes: 1
   gpus: 1
-  cpus: 8
-  time: 1440 # 24 hours
+  cpus: 4
+  time: 60 # 1 hour
   partition: "main"
 
 # Variables for your python code
 device: "cuda"
 paths:
-  data: "$SLURM_TMPDIR" # Fast SSD
+  data: "$SLURM_TMPDIR" # Fast SSD location
 log_wandb: True
