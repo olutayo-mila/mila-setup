@@ -1,5 +1,5 @@
 import hydra
-from omegaconf import DictConfig
+from omegaconf import DictConfig, OmegaConf
 import torch
 import os
 import wandb
@@ -47,7 +47,7 @@ def main(cfg: DictConfig):
         if i == 0:
             print(f"   Batch Shape: {images.shape}")
             print(f"   Label Shape: {labels.shape}")
-            
+
         # Fake a loss for testing
         fake_loss = 1.0 / (i + 1)
         
