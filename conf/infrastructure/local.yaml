@@ -11,7 +11,7 @@ infrastructure:
   partition: "debug"
   
 # Variables for your python code
-device: "cpu"
+device: "auto"
 paths:
   data: "./data"  # Relative path on laptop
 log_wandb: False
