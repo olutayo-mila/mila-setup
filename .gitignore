@@ -17,3 +17,6 @@ wandb/
 
 # Data (Symlinks or actual files)
 data/
+
+# slurm outputs
+slurm-*.out
